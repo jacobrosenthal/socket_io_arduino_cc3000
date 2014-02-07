@@ -43,7 +43,7 @@ bool SocketIOClient::connect(Adafruit_CC3000 cc3000, char thehostname[], int the
         }
         unsigned long lastRead = millis();
         do {
-            client = cc3000.connectTCP(ip, 80);
+            client = cc3000.connectTCP(ip, theport);
         } while((!client.connected()) &&
                 ((millis() - lastRead) < 3000));
 	hostname = thehostname;
@@ -218,7 +218,7 @@ bool SocketIOClient::readHandshake(Adafruit_CC3000 cc3000) {
     }
     unsigned long lastRead = millis();
     do {
-        client = cc3000.connectTCP(ip, 80);
+        client = cc3000.connectTCP(ip, port);
     } while((!client.connected()) &&
             ((millis() - lastRead) < 3000));
 
